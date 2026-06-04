@@ -4,12 +4,20 @@ class GitHubPrivateTarballDownloadStrategy < CurlDownloadStrategy
   def initialize(url, name, version, **meta)
     super
     @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
-    return if @github_token
+    @github_token = github_cli_token if @github_token.to_s.empty?
+    return unless @github_token.to_s.empty?
 
-    raise CurlDownloadStrategyError, "HOMEBREW_GITHUB_API_TOKEN is required to install sprout from the private source repository."
+    raise CurlDownloadStrategyError, "Private Sprout installs require GitHub auth. Run gh auth login, or set HOMEBREW_GITHUB_API_TOKEN."
   end
 
   private
+
+  def github_cli_token
+    token = Utils.safe_popen_read("gh", "auth", "token").strip
+    token.empty? ? nil : token
+  rescue
+    nil
+  end
 
   def _fetch(url:, resolved_url:, timeout:)
     curl_download url,
