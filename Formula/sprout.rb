@@ -3,8 +3,8 @@ require "download_strategy"
 class GitHubPrivateTarballDownloadStrategy < AbstractFileDownloadStrategy
   def initialize(url, name, version, **meta)
     super
-    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
-    @github_token = github_cli_token if @github_token.to_s.empty?
+    @github_token = github_cli_token
+    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"] if @github_token.to_s.empty?
     if @github_token.to_s.empty?
       raise "Private Sprout installs require GitHub auth. Run gh auth login, or set HOMEBREW_GITHUB_API_TOKEN."
     end
