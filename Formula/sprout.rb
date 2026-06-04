@@ -20,7 +20,7 @@ class GitHubPrivateTarballDownloadStrategy < AbstractFileDownloadStrategy
         ohai "Downloading #{url} with gh api"
         temporary_path.dirname.mkpath
         api_path = url.sub("https://api.github.com", "")
-        archive = Utils.safe_popen_read({ "GH_TOKEN" => @github_token }, "gh", "api", api_path)
+        archive = Utils.safe_popen_read({ "GH_TOKEN" => @github_token }, gh_executable, "api", api_path)
         IO.binwrite(temporary_path, archive)
         temporary_path.rename(cached_location.to_s)
       end
@@ -32,8 +32,15 @@ class GitHubPrivateTarballDownloadStrategy < AbstractFileDownloadStrategy
 
   private
 
+  def gh_executable
+    gh = HOMEBREW_PREFIX/"bin/gh"
+    return gh.to_s if gh.executable?
+
+    "gh"
+  end
+
   def github_cli_token
-    token = Utils.safe_popen_read("gh", "auth", "token").strip
+    token = Utils.safe_popen_read(gh_executable, "auth", "token").strip
     token.empty? ? nil : token
   rescue
     nil
