@@ -50,10 +50,10 @@ end
 class Sprout < Formula
   desc "Repository-local task tracker for agents"
   homepage "https://github.com/StreamlinedStartup/sprout"
-  url "https://api.github.com/repos/StreamlinedStartup/sprout/tarball/v1.2.25",
+  url "https://api.github.com/repos/StreamlinedStartup/sprout/tarball/v1.2.26",
     using: GitHubPrivateTarballDownloadStrategy
-  sha256 "3255ffced921f8f1cacbe13563ddc19de15d629573ef08198d43b2bb4f3c7b81"
-  version "1.2.25"
+  sha256 "a69e810859886e10038b2c1cc51e7b756c663856be99e6c4166cf3d69ddd1cd6"
+  version "1.2.26"
 
   depends_on "go" => :build
 
