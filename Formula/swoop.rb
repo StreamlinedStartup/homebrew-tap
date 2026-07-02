@@ -5,23 +5,23 @@
 class Swoop < Formula
   desc "TUI/CLI skill manager for Claude Code + Codex"
   homepage "https://github.com/StreamlinedStartup/skillswoop"
-  version "0.1.3"
+  version "0.2.0"
   license "MIT"
 
   depends_on "node"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.1.3/swoop_0.1.3_darwin_x86_64.tar.gz"
-      sha256 "66c66900ae41c14092321f8a6fd6958bfa460549c78b8ea1d5c8bfb8c1f6191c"
+      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.2.0/swoop_0.2.0_darwin_x86_64.tar.gz"
+      sha256 "712936f551736c34f8c447c003fc63ebbaeedad0bb1f075ada040efbba64a741"
 
       define_method(:install) do
         bin.install "swoop"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.1.3/swoop_0.1.3_darwin_arm64.tar.gz"
-      sha256 "c7f859090fcb7a6e75bcab0d448fe580788036778785a67bc3eee344b6ff7e49"
+      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.2.0/swoop_0.2.0_darwin_arm64.tar.gz"
+      sha256 "b58e23c8a7865909c793c10c496594aa64319479c88ca494d6d918a5116b1e42"
 
       define_method(:install) do
         bin.install "swoop"
@@ -31,15 +31,15 @@ class Swoop < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.1.3/swoop_0.1.3_linux_x86_64.tar.gz"
-      sha256 "5aaebaad2f54d9d47df2d9bf82c87c31abcaee255f246df3c3c7678d386cf37f"
+      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.2.0/swoop_0.2.0_linux_x86_64.tar.gz"
+      sha256 "aed9307fa6b340da90aa29f8ac9dda518cd0b70999b7716cb447322e8beb3f38"
       define_method(:install) do
         bin.install "swoop"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.1.3/swoop_0.1.3_linux_arm64.tar.gz"
-      sha256 "689af9d6b1904db5af0ce2e9652d539d99b4a764c7afcdde4e94aa7090850166"
+      url "https://github.com/StreamlinedStartup/skillswoop/releases/download/v0.2.0/swoop_0.2.0_linux_arm64.tar.gz"
+      sha256 "d73e76b4b05195cdc12e8b0041e3b7449afd2918339e2cf4e47f9671bc9f3a0d"
       define_method(:install) do
         bin.install "swoop"
       end
