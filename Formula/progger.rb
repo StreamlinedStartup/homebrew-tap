@@ -50,10 +50,10 @@ end
 class Progger < Formula
   desc "Git-native task and tacit knowledge management for AI agents"
   homepage "https://github.com/StreamlinedStartup/prog"
-  url "https://api.github.com/repos/StreamlinedStartup/prog/tarball/v1.1.0",
+  url "https://api.github.com/repos/StreamlinedStartup/prog/tarball/v1.1.1",
     using: GitHubPrivateTarballDownloadStrategy
-  sha256 "add61fbaa283886155ac2e0543b8e20ce2b1409b6ea42dbe2a263fe2574c9739"
-  version "1.1.0"
+  sha256 "9cb49c6275abe5be0cdb8cdab7b6262e36dd39872b98076cad11257e3b73bacd"
+  version "1.1.1"
 
   depends_on "go" => :build
 
