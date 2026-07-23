@@ -6,7 +6,11 @@ class GitHubPrivateTarballDownloadStrategy < AbstractFileDownloadStrategy
     @github_token = github_cli_token
     @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"] if @github_token.to_s.empty?
     if @github_token.to_s.empty?
-      raise "Private Progger installs require GitHub auth. Run gh auth login, or set HOMEBREW_GITHUB_API_TOKEN."
+      raise <<~MSG
+        Private Progger installs require GitHub auth. Homebrew strips GH_TOKEN and
+        resets PATH for formula code, so a gh login may be unreachable here. Fix:
+          export HOMEBREW_GITHUB_API_TOKEN="$(gh auth token)"   # add to ~/.zshrc
+      MSG
     end
   end
 
